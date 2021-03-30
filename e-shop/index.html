@@ -21,22 +21,35 @@
             </div>
             <div class="product-info">
                 <h1>{{product}}</h1> 
-
+                
 
                 <h3 v-if="inventory > 10">in stock</h3>
                 <h3 v-else-if="inventory <= 10 && inventory > 0">almost in stock</h3>
                 <h3 v-else>out of stock</h3>
 
+            <!--
                 <h3 v-if='onSale'>onSale!</h3>
                 <h3 v-else>out of Sale</h3>
+            -->
+              <!--render a list of socks details-->
+                    <ul >
+                        <li v-for="detail in details">{{detail}}</li>
+                    </ul>
+              <!--render a list that is provided choice of colors-->
+                    <div v-for="variant in variants" :key="variant.variantId">
+                           <p> {{variant.variantColor}} </p>
+                    </div>
+              <!---
+                    <a :href="link">Here's the link</a>
+              -->
 
-             
+              <!--add button cart functionality here..-->
+              <div>
+                  <button v-on:click="addToCart">Cart</button>
+                  <p>{{counter}}</p>
+              </div>
 
-
-                <a :href="link">Here's the link</a>
             </div> 
-
-            
         </div>
     </div>
 
