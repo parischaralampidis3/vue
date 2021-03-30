@@ -8,28 +8,36 @@ const app = new Vue({
         onSale: true,
         inventory: 11,
         cart:0,
-        methods:{
-            addToCart(){
-                this.cart += 1
-            }
-        }
-        ,
+      
         details : [
             'cotton 80%','polyester 20%','gender-neutral'
         ],
         variants : [
             {
                 variantId:1234,
-                variantColor: "green"
+                variantColor: "green",
+                variantImage: './images/vmSocks-green-onWhite.jpg'
             },
             {
                 variantId:2235,
-                variantColor: "blue"
+                variantColor: "blue",
+                variantImage: './images/vmSocks-blue-onWhite.png'
             }
-        ]
+        ]  
+        
+    },
     
+    methods:{
+            addToCart:function(){
+                this.cart += 1
+            },
+            removeFromCart:function(){
+                this.cart -= 1
+            },
+            updateProduct: function(variantImage){
+                this.image = variantImage
+            }
+        }
         
-        
-    }
 })
 
