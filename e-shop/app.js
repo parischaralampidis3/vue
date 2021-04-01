@@ -4,11 +4,15 @@ const app = new Vue({
         product: "Socks",
         image: './images/vmSocks-green-onWhite.jpg',
         link: "https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding",
-        inStock: true,
+        inStock: false,
         onSale: true,
-        inventory: 11,
+        inventory: 0,
         cart:0,
-      
+        color:'green',
+        underline:{
+            textDecoration:'line-through',
+            fontSize:"28px"
+        },
         details : [
             'cotton 80%','polyester 20%','gender-neutral'
         ],

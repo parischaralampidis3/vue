@@ -20,12 +20,14 @@
               
             </div>
             <div class="product-info">
-                <h1>{{product}}</h1> 
+                <h1 :style="{color}">{{product}}</h1> 
                 
 
                 <h3 v-if="inventory > 10">in stock</h3>
                 <h3 v-else-if="inventory <= 10 && inventory > 0">almost in stock</h3>
-                <h3 v-else>out of stock</h3>
+                <h3 v-else 
+                :style = "underline"
+                >out of stock</h3>
 
             <!--
                 <h3 v-if='onSale'>onSale!</h3>
@@ -36,8 +38,12 @@
                         <li v-for="detail in details">{{detail}}</li>
                     </ul>
               <!--render a list that is provided choice of colors-->
-                    <div v-for="variant in variants" :key="variant.variantId">
-                           <p @mouseover="updateProduct(variant.variantImage)"> {{variant.variantColor}} </p>
+                    <div v-for="variant in variants" 
+                    :key="variant.variantId"
+                    class="color-box"
+                    :style = "{backgroundColor: variant.variantColor}" 
+                    @mouseover="updateProduct(variant.variantImage)">
+                          
                     </div>
               <!---
                     <a :href="link">Here's the link</a>
@@ -47,13 +53,21 @@
         
               <div class="cart">    
                     <h3>Add product to your cart:</h3>
-                  <button v-on:click="addToCart">Add</button>
-                  <button v-on:click="removeFromCart">Remove</button>
+                  <button v-on:click="addToCart" 
+                  :disabled="!inStock"
+                  :class = "{disabledButton: inStock}"
+                
+                  >Add</button>
+                  <button v-on:click="removeFromCart"
+                  :class="{disabledButton : cart <= 0 }"
+                  >Remove</button>
                   <p>Cart:{{cart}}</p>
               </div>
 
             </div> 
         </div>
+
+        
     </div>
 
 
